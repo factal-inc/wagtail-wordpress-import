@@ -114,7 +114,7 @@ class BlockBuilder:
                     )  # before building a block write fall back cache to a block
                 self.blocks.append(builder_function(element))
             else:
-                if element.text.strip():  # exclude a tag that is empty
+                if not element.is_empty_element:
                     cached_fallback_value += str(element)
 
             if cached_fallback_value and counter == len(
